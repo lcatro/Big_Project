@@ -72,6 +72,8 @@ library SafeMath {
             balances[msg.sender] = SafeMath.sub(balances[msg.sender],_amount);
             balances[_to] = SafeMath.add(balances[_to],_amount);
             
+            Transfer(msg.sender,_to,_amount);
+            
             return true;
          }
          
@@ -88,6 +90,8 @@ library SafeMath {
          if (balances[_from] >= _amount) {
             balances[_from] = SafeMath.sub(balances[_from],_amount);
             balances[_to] = SafeMath.add(balances[_to],_amount);
+            
+            Transfer(_from,_to,_amount);
             
             return true;
          }
